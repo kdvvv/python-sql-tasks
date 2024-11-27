@@ -13,6 +13,7 @@ def test_solution(db_transaction):
     comment_2_id = add_comment(db_transaction, comment_2)
 
     latest_post = get_latest_posts(db_transaction, 1)[0]
+    print(latest_post)
     latest_post_comment_1 = next(c for c in latest_post['comments'] if c['id'] == comment_1_id)
     latest_post_comment_2 = next(c for c in latest_post['comments'] if c['id'] == comment_2_id)
 
