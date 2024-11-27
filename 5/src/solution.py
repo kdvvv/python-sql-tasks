@@ -2,6 +2,11 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 from datetime import datetime
 
+
+conn = psycopg2.connect('postgresql://postgres:@localhost:5432/test_db')
+
+
+# BEGIN
 def create_post(conn, post_data):
     with conn.cursor() as cursor:
         cursor.execute(
@@ -48,3 +53,4 @@ def get_latest_posts(conn, n):
             post['comments'] = cursor.fetchall()
 
         return posts
+# END
